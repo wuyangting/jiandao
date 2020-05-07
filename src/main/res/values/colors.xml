@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="black">#000000</color>
+    <color name="c_eaeaea">#eaeaea</color>
+    <color name="red">#ff0000</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#898585</color>
+    <color name="gray_qian">#E5E4E4</color>
+    <color name="gray_black">#5C5E5E</color>
+    <color name="gray_qian1">#D6D8DA</color>
+    <color name="color_RED">#ff0000</color>
+</resources>

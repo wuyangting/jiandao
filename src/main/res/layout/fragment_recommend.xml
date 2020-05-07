@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/draw"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_marginTop="30dp"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <androidx.appcompat.widget.Toolbar
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/tool"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"></androidx.appcompat.widget.Toolbar>
+
+
+    <com.google.android.material.tabs.TabLayout
+        app:tabTextColor="@color/tab_top"
+        app:layout_constraintLeft_toRightOf="@id/tool"
+        app:layout_constraintRight_toLeftOf="@+id/im"
+        android:id="@+id/recommend_tab"
+        app:tabRippleColor="@android:color/transparent"
+        app:tabMode="scrollable"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"></com.google.android.material.tabs.TabLayout>
+    <ImageView
+        android:id="@+id/im"
+        app:layout_constraintLeft_toRightOf="@id/recommend_tab"
+        android:src="@drawable/search"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="50dp"
+        android:layout_height="match_parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_weight="1"
+            android:id="@+id/recommend_page"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"></androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_gravity="left"
+        app:menu="@menu/menu_navi"
+
+        android:layout_width="match_parent"
+        app:headerLayout="@layout/head_layout"
+        android:layout_height="match_parent"></com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>

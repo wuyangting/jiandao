@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/draw"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.view.HomeActivity">
+
+      <androidx.viewpager.widget.ViewPager
+          android:id="@+id/home_page"
+          android:layout_weight="1"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"></androidx.viewpager.widget.ViewPager>
+      <com.google.android.material.tabs.TabLayout
+          android:id="@+id/home_tab"
+          app:tabRippleColor="@android:color/transparent"
+          android:layout_width="match_parent"
+          android:layout_height="70dp"></com.google.android.material.tabs.TabLayout>
+
+</LinearLayout>

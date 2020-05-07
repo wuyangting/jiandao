@@ -1,0 +1,97 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdkVersion 22
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    greendao {
+        //数据库版本号，升级时修改
+        schemaVersion 1
+        //生成的DAO，DaoMaster和DaoSession的包路径。默认与表实体所在的包路径相同
+        daoPackage 'com.example.myapplication.greendaodemo.db'
+        //生成源文件的路径。默认源文件目录是在build目录中的(build/generated/source/greendao)
+        targetGenDir 'src/main/java'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0' //ViewPAger2
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    //implementation 'androidx.recyclerview:recyclerview:1.0.0'         //RecyclerView
+    implementation "io.reactivex.rxjava2:rxjava:2.1.3" // 必要rxjava2依赖
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1" // 必要rxandrroid依赖，切线程时需要用到
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0' // 必要依赖，和Rxjava结合必须用到，下面会提到
+
+    implementation 'com.jakewharton:butterknife:10.0.0'  //Buttonknife
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+
+    dependencies {
+        debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+        releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    }
+    //三方封装的适配器
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.2'
+
+
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation 'com.youth.banner:banner:1.4.10'
+
+
+    //三方工具类
+    //基础工具库
+    implementation 'com.github.tamsiree.RxTool:RxKit:2.6.2'
+    //UI库
+    implementation 'com.github.tamsiree.RxTool:RxUI:2.6.2'
+    //相机库
+    implementation 'com.github.tamsiree.RxTool:RxCamera:2.6.2'
+    //功能库（Zxing扫描与生成二维码条形码）
+    implementation 'com.github.tamsiree.RxTool:RxFeature:2.6.2'
+    //ArcGis For Android工具库（API：100.1以上版本）
+    implementation 'com.github.tamsiree.RxTool:RxArcGisKit:2.6.2'
+    //支付模块(支付宝 微信)[暂为待优化模块，谨慎]
+    implementation 'com.github.tamsiree.RxTool:RxPay:2.6.2'
+
+
+    implementation 'fm.jiecao:jiecaovideoplayer:2.0'
+//    implementation 'fm.jiecao:jiecaovideoplayer:4.8.3'    //视频框架依赖
+
+    //搜索框
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+//GreenDao数据库
+    implementation 'org.greenrobot:greendao:3.2.2' // add library
+    implementation 'org.greenrobot:greendao-generator:3.2.2'
+//上拉刷新，下拉加载
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
+}

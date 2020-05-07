@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/search"
+
+        android:title="搜索感兴趣的内容" />
+<group >
+        <item android:id="@+id/commend" android:title="推荐"></item>
+        <item android:id="@+id/strategy" android:title="战略"></item>
+
+</group>
+    <group >
+        <item android:id="@+id/project" android:title="工程"></item>
+        <item android:id="@+id/road" android:title="一带一路"></item>
+
+    </group>
+    <group >
+        <item android:id="@+id/mechanical" android:title="机械"></item>
+        <item android:id="@+id/special" android:title="特写"></item>
+
+    </group>
+    <group >
+        <item android:id="@+id/editorial" android:title="社评"></item>
+        <item android:id="@+id/immediately" android:title="即时"></item>
+
+    </group>
+    <group >
+        <item android:id="@+id/extend" android:title="传承"></item>
+
+    </group>
+    <group >
+        <item android:title="管理栏目"></item>
+        <item android:title="分享App"></item>
+        <item android:title="意见反馈"></item>
+
+    </group>
+</menu>

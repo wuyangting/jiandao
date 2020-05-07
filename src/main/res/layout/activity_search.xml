@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.search.SearchActivity">
+    <ImageView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="15dp"
+        android:id="@+id/im_sear"
+        android:layout_width="50dp"
+        android:src="@drawable/search"
+        android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/et_search"
+            app:layout_constraintLeft_toRightOf="@id/im_sear"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="15dp"
+           android:hint="搜索感兴趣的内容"
+            app:layout_constraintRight_toLeftOf="@id/delete"
+            android:textSize="15sp"
+            android:layout_width="0dp"
+            android:layout_height="50dp" />
+<TextView
+    android:id="@+id/delete"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toRightOf="@id/et_search"
+    android:layout_marginTop="17dp"
+    android:gravity="center_horizontal"
+
+    android:textSize="20sp"
+    app:layout_constraintRight_toRightOf="parent"
+    android:textColor="@color/black"
+    android:padding="5dp"
+    android:text="取消"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <View
+        app:layout_constraintTop_toBottomOf="@id/et_search"
+        app:layout_constraintLeft_toLeftOf="parent"
+       android:layout_marginLeft="15dp"
+        android:id="@+id/view"
+        android:layout_marginRight="12dp"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"></View>
+<androidx.constraintlayout.widget.ConstraintLayout
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:id="@+id/history_list"
+    app:layout_constraintTop_toBottomOf="@id/view"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="15dp"
+        android:text="历史记录"
+        android:textColor="@color/black"
+        android:id="@+id/history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+<TextView
+    android:id="@+id/delete_history"
+    android:textColor="@color/black"
+    android:text="清除历史"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_margin="15dp"
+    android:layout_height="wrap_content" />
+    <com.example.myapplication.widget.FlowLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/history_flow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.example.myapplication.widget.FlowLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/search_list"
+    android:visibility="gone"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+    app:layout_constraintTop_toTopOf="parent"
+    android:id="@+id/smart"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_result_rec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

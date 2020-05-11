@@ -1,5 +1,6 @@
 package com.example.myapplication.home.ui.special;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseFragment;
+import com.example.myapplication.home.ui.details.DetailsActivity;
 import com.example.myapplication.home.ui.special.adapter.SpecialAdapter;
 import com.example.myapplication.home.ui.special.bean.SpecialBean;
 import com.example.myapplication.home.ui.special.contract.SpecialContract;
@@ -42,9 +44,18 @@ public class SpecialFragment extends BaseFragment<SpecialPresenterImpl> implemen
         mRecSpecial = (RecyclerView) inflate.findViewById(R.id.special_rec);
         mRecSpecial.setLayoutManager(new LinearLayoutManager(getActivity()));
         ArrayList<SpecialBean.ResultSpecial> resultSpecials = new ArrayList<>();
-        adapter = new SpecialAdapter(getActivity());
+        adapter = new SpecialAdapter(getActivity(),getActivity());
         mRecSpecial.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayout.VERTICAL));
         mRecSpecial.setAdapter(adapter);
+        adapter.setOnClick(new SpecialAdapter.onClick() {
+            @Override
+            public void click(String id, String link) {
+                Intent intent = new Intent(getActivity(), DetailsActivity.class);
+                intent.putExtra("link",link);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -54,12 +65,8 @@ public class SpecialFragment extends BaseFragment<SpecialPresenterImpl> implemen
 
     @Override
     public void setData(SpecialBean specialBean) {
-        ArrayList<String> bannerList = new ArrayList<>();
-        for (int i = 0; i < specialBean.getData().getBanner_list().size(); i++) {
-            SpecialBean.DataBean.BannerListBean bannerListBean = specialBean.getData().getBanner_list().get(i);
-            bannerList.add(bannerListBean.getImage_url());
-        }
-        adapter.addData(bannerList,specialBean.getData().getList());
+        List<SpecialBean.DataBean.BannerListBean> banner_list = specialBean.getData().getBanner_list();
+        adapter.addData(banner_list,specialBean.getData().getList());
     }
 
     @Override

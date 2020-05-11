@@ -15,11 +15,26 @@ public abstract class BaseLayFragment<P extends BasePre> extends Fragment implem
     private boolean IS_VIEW_CREATED=false;
     private boolean IS_DATA_LOAD=false;
 
+    //    获取焦点
+    @Override
+    public void onResume() {
+        super.onResume();
+        isCurrentVisibleToUser(true);
+    }
+
+    protected abstract void isCurrentVisibleToUser(boolean b);
+
+    //    暂停--失去焦点
+    @Override
+    public void onPause() {
+        super.onPause();
+        isCurrentVisibleToUser(false);
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-
         super.onActivityCreated(savedInstanceState);
-//        lazyLoad();
+        lazyLoad();
     }
 
     @Nullable
@@ -41,8 +56,9 @@ public abstract class BaseLayFragment<P extends BasePre> extends Fragment implem
         super.setUserVisibleHint(isVisibleToUser);
         if(isVisibleToUser){
             lazyLoad();
-        }
 
+        }
+        isCurrentVisibleToUser(isVisibleToUser);
     }
 
     protected abstract void initListener();

@@ -1,5 +1,6 @@
 package com.example.myapplication.home.ui.recommend.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,14 +10,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseFragment;
+import com.example.myapplication.base.BaseLayFragment;
+import com.example.myapplication.home.ui.details.DetailsActivity;
 import com.example.myapplication.home.ui.recommend.fragment.adapter.NewsBannerAdapter;
 import com.example.myapplication.home.ui.recommend.fragment.adapter.RecommendAdapter;
 import com.example.myapplication.home.ui.recommend.fragment.bean.RecommendRecBean;
@@ -31,14 +38,9 @@ import java.util.TimerTask;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
-public class RecommendAndFragment extends BaseFragment<RecommendPresenterFragment> implements RecommendAndContract.RecommendAndView {
-    private List<View> banner_views = new ArrayList<>();
+public class RecommendAndFragment extends BaseLayFragment<RecommendPresenterFragment> implements RecommendAndContract.RecommendAndView {
     private RecyclerView mRecommendAdapterFragment;
     private RecommendAdapter adapter;
-    private ViewPager mViewpageBanner;
-    private Banner_Indicator mIndicatorBanner;
-    private int viewpage_Current_Pos;
-    private int current_banner_item;
 
     @Override
     protected void initListener() {
@@ -60,16 +62,26 @@ public class RecommendAndFragment extends BaseFragment<RecommendPresenterFragmen
 
     @Override
     protected void initView(View inflate) {
-        mViewpageBanner = (ViewPager) inflate.findViewById(R.id.banner_viewpage);
-        mIndicatorBanner = (Banner_Indicator) inflate.findViewById(R.id.banner_indicator);
         mRecommendAdapterFragment = (RecyclerView) inflate.findViewById(R.id.fragment_recommend_adapter);
         mRecommendAdapterFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecommendAdapterFragment.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayout.VERTICAL));
         List<RecommendRecBean.ResultData> resultData = new ArrayList<>();
-        adapter = new RecommendAdapter(resultData);
-
+        adapter = new RecommendAdapter(resultData,getActivity());
         mRecommendAdapterFragment.setAdapter(adapter);
-
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                List<RecommendRecBean.ResultData> data = (List<RecommendRecBean.ResultData>) adapter.getData();
+                Intent intent = new Intent(getActivity(), DetailsActivity.class);
+                if(data.get(position).getItemType()== RecommendRecBean.ResultData.TYPE_LIST|| data.get(position).getItemType()==RecommendRecBean.ResultData.TYPE_TE_XIE||data.get(position).getItemType()==RecommendRecBean.ResultData.TYPE_VIDEO){
+                    RecommendRecBean.DataBean.ArticleListBean listBean= (RecommendRecBean.DataBean.ArticleListBean) data.get(position).data;
+                    intent.putExtra("link",listBean.getLink());
+                    intent.putExtra("id",listBean.getId());
+                    Toast.makeText(getActivity(), listBean.getId(), Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
@@ -80,8 +92,14 @@ public class RecommendAndFragment extends BaseFragment<RecommendPresenterFragmen
     @Override
     public void setData(RecommendRecBean data2) {
 
-        initBanner(data2);
+//        initBanner(data2);
         ArrayList<RecommendRecBean.ResultData> resultData = new ArrayList<>();
+
+        List<RecommendRecBean.DataBean.BannerListBean> banner_list = data2.getData().getBanner_list();
+        RecommendRecBean.ResultData banner = new RecommendRecBean.ResultData();
+        banner.type= RecommendRecBean.ResultData.TYPE_BANNER;
+        banner.data=banner_list;
+resultData.add(banner);
 
         //跑马灯文字数据
         StringBuffer taxts = new StringBuffer();
@@ -114,70 +132,17 @@ public class RecommendAndFragment extends BaseFragment<RecommendPresenterFragmen
 
     }
 
-    private void initBanner(RecommendRecBean data2) {
-        for (int i = 0; i <data2.getData().getBanner_list().size(); i++) {
-            current_banner_item = i;
-            View ban_view = LayoutInflater.from(getContext()).inflate(R.layout.news_banner_item,null,false);
-            TextView bannerContent = ban_view.findViewById(R.id.banner_content);
-            ImageView bannerImage =  ban_view.findViewById(R.id.benner_image);
-            bannerContent.setText(data2.getData().getBanner_list().get(i).getDescription());
-            Glide.with(getContext()).load(data2.getData().getBanner_list().get(i).getImage_url()).into(bannerImage);
-            banner_views.add(ban_view);
-            ban_view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getContext(), "点击了"+current_banner_item+"个view", Toast.LENGTH_SHORT).show();
-                }
-            });
-        };
-
-        NewsBannerAdapter bannerAdapter = new NewsBannerAdapter(banner_views);
-        mViewpageBanner.setAdapter(bannerAdapter);
-
-//        设置图片数量，总数
-        mIndicatorBanner.setBannerImageSize(data2.getData().getBanner_list().size());
-//        设置当前轮播图位置，默认0
-        mIndicatorBanner.setCurrentBannerItem(0);
-
-//        viewPage监听
-        mViewpageBanner.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                current_banner_item = position;
-//                在监听过程中，更改指示器种轮播图得当前位置，重绘指示器
-                mIndicatorBanner.setCurrentBannerItem(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-//        倒计时
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                viewpage_Current_Pos+=1;
-                Log.e("TAG","当前位置"+viewpage_Current_Pos%(data2.getData().getBanner_list().size()));
-
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mViewpageBanner.setCurrentItem(viewpage_Current_Pos%(data2.getData().getBanner_list().size()));
-                    }
-                });
-            }
-        };
-        timer.schedule(timerTask,2000,2000);
-    }
 
     @Override
     public void showToast(String msg) {
+
+    }
+
+    @Override
+    protected void isCurrentVisibleToUser(boolean b) {
+        if(adapter!=null){
+            adapter.isCurrentVisibleToUser(b);
+        }
 
     }
 

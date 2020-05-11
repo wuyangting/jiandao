@@ -36,6 +36,7 @@
 <TextView
     android:layout_marginTop="8dp"
     android:textSize="15sp"
+    android:id="@+id/nolegon_desc"
     app:layout_constraintTop_toBottomOf="@id/legonorno"
     android:textColor="@color/white"
     android:text="@string/no_login_noti"

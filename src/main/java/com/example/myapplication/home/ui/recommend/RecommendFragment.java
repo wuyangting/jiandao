@@ -99,7 +99,7 @@ public class RecommendFragment extends BaseFragment<RecommendPresenterImpl> impl
             Intent intent = new Intent(getActivity(), SearchActivity.class);
             startActivity(intent);
         }
-    });
+        });
     }
 
     @Override
@@ -126,9 +126,6 @@ public class RecommendFragment extends BaseFragment<RecommendPresenterImpl> impl
         drawerToggle.syncState();
         mDraw.addDrawerListener(drawerToggle);
         mTool.setNavigationIcon(R.drawable.ic_home_top_logo);
-
-
-
     }
 
     @Override
@@ -151,9 +148,9 @@ public class RecommendFragment extends BaseFragment<RecommendPresenterImpl> impl
             fragments.add(movieFragment);
         }
         adapter = new RecommendPageAdapter(getChildFragmentManager(), fragments, tabs);
-        mPageRecommend.setOffscreenPageLimit(4);   //参数写多少就是加载多少页
         mPageRecommend.setAdapter(adapter);
         mTabRecommend.setupWithViewPager(mPageRecommend);
+        mPageRecommend.setOffscreenPageLimit(tabBean.getData().getList().size());
         for (int i = 0; i < tabs.size(); i++) {
             TabLayout.Tab tab = mTabRecommend.getTabAt(i);
             //设置自定义布局

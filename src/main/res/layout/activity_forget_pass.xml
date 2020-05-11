@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.ui.legon.ForgetPassActivity">
+    <ImageView
+        android:id="@+id/close"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_update_close"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="25dp"
+        android:text="忘记密码"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:id="@+id/view"
+        android:background="@color/gray_qian1"
+        app:layout_constraintTop_toBottomOf="@id/close"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <EditText
+        android:id="@+id/phone"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/et_getcode"
+        app:layout_constraintTop_toBottomOf="@id/phone"
+        android:layout_margin="20dp"
+        android:hint="输入验证码"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/get_code"
+        android:text="@string/getcode"
+        app:layout_constraintRight_toRightOf="parent"
+      android:layout_marginRight="40dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/et_getcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/next"
+
+        android:background="@drawable/legon_shape"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/next"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/get_code"
+        android:layout_marginTop="70dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

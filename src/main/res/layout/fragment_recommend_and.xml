@@ -5,18 +5,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/banner_viewpage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        tools:ignore="MissingConstraints" />
-    <com.example.myapplication.home.ui.recommend.fragment.Banner_Indicator
-        android:id="@+id/banner_indicator"
-        android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/banner_viewpage"
-        android:layout_height="10dp"
-        tools:ignore="MissingConstraints" />
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/fragment_recommend_adapter"
     android:layout_width="match_parent"

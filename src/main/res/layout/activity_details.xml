@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.ui.details.DetailsActivity">
+    <ImageView
+        android:id="@+id/info_back"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_back1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/info_fx"
+        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_news_detail_share"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        tools:ignore="MissingConstraints" />
+    <ImageView
+        android:id="@+id/info_collect"
+        android:layout_margin="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/collect"
+        app:layout_constraintRight_toLeftOf="@id/info_fx"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/info_good"
+        android:layout_marginTop="10dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/good_xq"
+        app:layout_constraintRight_toLeftOf="@id/info_collect"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/info_search"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/search"
+        app:layout_constraintRight_toLeftOf="@id/info_good"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/fg"
+        app:layout_constraintTop_toBottomOf="@id/info_back"
+        android:layout_width="match_parent"
+        android:background="#000000"
+        android:layout_marginTop="10dp"
+        android:layout_height="2dp"
+        tools:ignore="MissingConstraints" />
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/detail_rec"
+    app:layout_constraintTop_toBottomOf="@id/fg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+</androidx.constraintlayout.widget.ConstraintLayout>

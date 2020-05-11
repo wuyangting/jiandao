@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.home.ui.movie.bean.MovieBean;
+import com.example.myapplication.home.ui.special.adapter.SpecialAdapter;
 import com.scwang.smartrefresh.header.FlyRefreshHeader;
 
 import java.util.ArrayList;
@@ -46,18 +47,12 @@ public class MovieRecAdapter extends RecyclerView.Adapter {
         JCVideoPlayer jCVideoPlayer = videoViewHolder.jcVideoPlayerStandard;
         jCVideoPlayer.setUp(listBean.getVideo_url(),listBean.getTheme());
         Glide.with(context).load(listBean.getImage_url()).into(jCVideoPlayer.ivThumb);
-//        jCVideoPlayer.ivThumb.setThumbInCustomProject("视频/MP3缩略图地址");
-
-        //之后版本
-//        boolean up = videoViewHolder.jcVideoPlayerStandard.setUp(listBean.getVideo_url(), JCVideoPlayer.SCREEN_LAYOUT_LIST, listBean.getTheme());
-//        Log.d("视频路径", "video: "+listBean.getVideo_url());
-//        if (up) {
-//            //展示播放器图片并充满
-//            //<iframe frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=g0874bjg03a" allowFullScreen="true"></iframe>
-////            video.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-//                //加载图片缩略图
-//            Glide.with(context).load(listBean.getImage_url()).into(videoViewHolder.jcVideoPlayerStandard.thumbImageView);
-//        }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClick.click(listBean.getId(),listBean.getLink());
+            }
+        });
     }
 
     @Override
@@ -79,5 +74,14 @@ public class MovieRecAdapter extends RecyclerView.Adapter {
             theme=itemView.findViewById(R.id.theme);
             small=itemView.findViewById(R.id.small);
         }
+    }
+    SpecialAdapter.onClick onClick;
+
+    public void setOnClick(SpecialAdapter.onClick onClick) {
+        this.onClick = onClick;
+    }
+
+    public interface onClick{
+        void click(String id,String link);
     }
 }

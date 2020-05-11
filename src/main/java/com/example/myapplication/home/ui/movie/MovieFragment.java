@@ -1,5 +1,6 @@
 package com.example.myapplication.home.ui.movie;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -10,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseFragment;
+import com.example.myapplication.home.ui.details.DetailsActivity;
 import com.example.myapplication.home.ui.movie.adapter.MovieRecAdapter;
 import com.example.myapplication.home.ui.movie.bean.MovieBean;
 import com.example.myapplication.home.ui.movie.contract.MovieContract;
 import com.example.myapplication.home.ui.movie.presenter.MoviePresenterImpl;
+import com.example.myapplication.home.ui.special.adapter.SpecialAdapter;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
@@ -44,6 +47,15 @@ public class MovieFragment extends BaseFragment<MoviePresenterImpl> implements M
         mMovierec.setLayoutManager(new LinearLayoutManager(getActivity()));
         mMovierec.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayout.VERTICAL));
         mMovierec.setAdapter(adapter);
+        adapter.setOnClick(new SpecialAdapter.onClick() {
+            @Override
+            public void click(String id, String link) {
+                Intent intent = new Intent(getActivity(), DetailsActivity.class);
+                intent.putExtra("link",link);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

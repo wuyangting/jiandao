@@ -7,10 +7,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.R;
 import com.example.myapplication.app.MyApplication;
 import com.example.myapplication.base.BaseFragment;
 import com.example.myapplication.home.setting.SettingActivity;
+import com.example.myapplication.home.ui.legon.LegonActivity;
 import com.example.myapplication.home.ui.mine.contract.MineContract;
 import com.example.myapplication.home.ui.mine.presenter.MinePresenterImpl;
 import com.example.myapplication.utils.SpUtil;
@@ -23,6 +27,8 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
     private TextView mTxtMes;
     private TextView mTxtSetting;
     private Button mLegon;
+    private TextView mDescNolegon;
+    private TextView mLegonorno;
 
     @Override
     protected void initListener() {
@@ -54,6 +60,41 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
         mTxtMes.setOnClickListener(this);
         mTxtSetting.setOnClickListener(this);
         mLegon.setOnClickListener(this);
+        mLegonorno = (TextView) inflate.findViewById(R.id.legonorno);
+        mDescNolegon = (TextView) inflate.findViewById(R.id.nolegon_desc);
+        if (MyApplication.isLogin) {
+            mLegon.setVisibility(View.GONE);
+            mDescNolegon.setVisibility(View.GONE);
+            String head_url = (String) SpUtil.getParam("head_url", "");
+            if(head_url!=null){
+                Glide.with(getActivity()).load(head_url) .apply(RequestOptions.bitmapTransform(new CircleCrop())).into(mUserpic);
+            }
+            String nickname = (String) SpUtil.getParam("nickname", "");
+            mLegonorno.setText(nickname);
+        } else {
+            mLegon.setVisibility(View.VISIBLE);
+            mDescNolegon.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (MyApplication.isLogin) {
+            mLegon.setVisibility(View.GONE);
+            mDescNolegon.setVisibility(View.GONE);
+            String head_url = (String) SpUtil.getParam("head_url", "");
+            if(head_url!=null){
+                Glide.with(getActivity()).load(head_url) .apply(RequestOptions.bitmapTransform(new CircleCrop())).into(mUserpic);
+            }
+            String nickname = (String) SpUtil.getParam("nickname", "");
+            mLegonorno.setText(nickname);
+        } else {
+            mLegon.setVisibility(View.VISIBLE);
+            mDescNolegon.setVisibility(View.VISIBLE);
+            mLegonorno.setText(R.string.no_login);
+            Glide.with(getActivity()).load(R.drawable.mine_pic) .apply(RequestOptions.bitmapTransform(new CircleCrop())).into(mUserpic);
+        }
     }
 
     @Override
@@ -99,27 +140,29 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
     }
 
     private void userPic() {
-        if(MyApplication.isLogin){
+        if (MyApplication.isLogin) {
             Toast.makeText(getActivity(), "您已经登陆成功，我们会尽快开发这个模块功能的！！！", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
+            Intent intent = new Intent(getActivity(), LegonActivity.class);
+            startActivity(intent);
             Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private void legon() {
-        if(MyApplication.isLogin){
+        if (MyApplication.isLogin) {
             Toast.makeText(getActivity(), "您已经登陆成功了", Toast.LENGTH_SHORT).show();
-        }else {
-            SpUtil.setParam("isLogin",true);
-            MyApplication.isLogin=true;
-            Toast.makeText(getActivity(), "恭喜您,登陆成功", Toast.LENGTH_SHORT).show();
+        } else {
+//            SpUtil.setParam("isLogin",true);
+//            MyApplication.isLogin=true;
+            Intent intent = new Intent(getActivity(), LegonActivity.class);
+            startActivity(intent);
         }
 
     }
 
     private void setting() {
-     startActivity(new Intent(getActivity(), SettingActivity.class));
+        startActivity(new Intent(getActivity(), SettingActivity.class));
     }
 
     private void message() {

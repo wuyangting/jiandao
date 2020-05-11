@@ -209,7 +209,7 @@ private boolean isNetWorkValid(){
 
     @Override
     public <T> void post(String url, INetCallback<T> callback) {
-        netApi.post("").subscribeOn(Schedulers.io())
+        netApi.post(url).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseBody>() {
                     @Override
@@ -246,7 +246,7 @@ private boolean isNetWorkValid(){
 
     @Override
     public <T> void post(String url, HashMap<String, String> map, INetCallback<T> callback) {
-        netApi.post("",map).subscribeOn(Schedulers.io())
+        netApi.post(url,map).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseBody>() {
                     @Override
@@ -258,6 +258,7 @@ private boolean isNetWorkValid(){
                     public void onNext(ResponseBody responseBody) {
                         try {
                             String string = responseBody.string();
+                            Log.d("网络数据", "onNext: "+string);
                             Type[] genericInterfaces = callback.getClass().getGenericInterfaces();
                             Type[] actualTypeArguments =( (ParameterizedType) genericInterfaces[0]).getActualTypeArguments();
                             Type type=actualTypeArguments[0];
@@ -271,7 +272,7 @@ private boolean isNetWorkValid(){
 
                     @Override
                     public void onError(Throwable e) {
-
+                        
                     }
 
                     @Override

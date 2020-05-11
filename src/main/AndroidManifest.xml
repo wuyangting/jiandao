@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <meta-data
+        android:name="android.webkit.WebView.EnableSafeBrowsing"
+        android:value="true" />
+
     <application
         android:name=".app.MyApplication"
         android:allowBackup="true"
@@ -18,7 +22,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".home.setting.SettingActivity"></activity>
+        <activity android:name=".home.ui.ConfimPassActivity"></activity>
+        <activity android:name=".home.ui.legon.ForgetPassActivity" />
+        <activity android:name=".home.ui.legon.PassWordLoginActivity" />
+        <activity android:name=".home.ui.legon.ConfrimRegistActivity" />
+        <activity android:name=".home.ui.legon.RegistActivity" />
+        <activity android:name=".home.ui.legon.LegonActivity" />
+        <activity android:name=".home.ui.details.DetailsActivity" />
+        <activity android:name=".home.setting.SettingActivity" />
         <activity android:name=".home.search.SearchActivity" />
         <activity android:name=".home.view.HomeActivity">
             <intent-filter>

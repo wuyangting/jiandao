@@ -69,7 +69,6 @@ public class Banner_Indicator extends View {
         rectf_right_defult = wind_Width/bannerImageSize*currentItemPosion;
 //        重新绘制  当前View
         invalidate();
-
     }
 
     public void getWindWidth(){
@@ -89,7 +88,7 @@ public class Banner_Indicator extends View {
         rectF.top = 0;
 //        动态获取右下点得X轴坐标
         rectF.right = rectf_right_defult;
-        rectF.bottom = 10;
+        rectF.bottom = 5;
 //        两个点确定一个矩形
 //        绘制
         canvas.drawRect(rectF,paint);

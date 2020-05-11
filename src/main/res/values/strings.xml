@@ -25,4 +25,15 @@
     <string name="recommend_app">像朋友推荐本应用</string>
     <string name="exit_legon">退出登录</string>
     <string name="jiandan_version">见道1.1.1</string>
+    <string name="phone">手机号</string>
+    <string name="verfi_code">请输验证码</string>
+    <string name="getcode">获取验证码</string>
+    <string name="legon_desc">注册即是同意见道的用户协议和隐私政策</string>
+    <string name="pass_legon">密码登陆</string>
+    <string name="now_regist">立即注册</string>
+    <string name="verfi_legon">验证码登陆</string>
+    <string name="next">下一步</string>
+    <string name="regist">注册</string>
+    <string name="forget_pass">忘记密码?</string>
+    <string name="complete">完成</string>
 </resources>

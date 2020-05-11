@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tamsiree.rxui.view.RxRunTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scroll_text"
+
     android:singleLine="true"
     android:ellipsize="marquee"
     android:layout_gravity="center_vertical"

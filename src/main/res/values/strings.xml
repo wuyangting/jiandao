@@ -36,4 +36,21 @@
     <string name="regist">注册</string>
     <string name="forget_pass">忘记密码?</string>
     <string name="complete">完成</string>
+    <string name="use_jifen">可用积分</string>
+    <string name="my_jifen">我的积分</string>
+    <string name="about_jifen">关于积分</string>
+    <string name="normal_task">普通任务</string>
+    <string name="zhuce_success">注册成功</string>
+    <string name="already_complete">已完成</string>
+    <string name="notifi_zhuce">成功认证，可获得一次积分</string>
+    <string name="day_task">每日任务</string>
+    <string name="day_qiandao">每日签到</string>
+    <string name="already_qiandao">已签到</string>
+    <string name="notifi_legon">每日登陆可获得一次积分</string>
+    <string name="read_articl">阅读文章</string>
+    <string name="default_percent">0/10</string>
+    <string name="notifi_read">每日最多可获得100积分</string>
+    <string name="notifi_share">每日最多可获得200积分</string>
+    <string name="my_collect">我的收藏</string>
+    <string name="edit">编辑</string>
 </resources>

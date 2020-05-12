@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.ui.jifen.JiFenActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/con_jifen"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <ImageView
+            android:id="@+id/back"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="40dp"
+            android:src="@drawable/ic_back1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="20dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="20sp"
+            android:text="@string/my_jifen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:text="@string/about_jifen"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/jifen"
+            android:layout_marginTop="80dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+         android:textSize="35sp"
+            android:textColor="@color/white"
+            android:text="@string/use_jifen"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:typeface="monospace"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/jifen"
+            android:text="@string/use_jifen"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+<View
+    app:layout_constraintTop_toBottomOf="@id/con_jifen"
+    android:layout_width="match_parent"
+    android:background="@color/gray_qian1"
+    android:layout_height="10dp"/>
+    <TextView
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/con_jifen"
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        android:text="@string/normal_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:id="@+id/normal_xian"
+        app:layout_constraintTop_toBottomOf="@id/con_jifen"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@color/gray_qian1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <TextView
+        android:id="@+id/zhuce_success"
+        app:layout_constraintTop_toBottomOf="@id/normal_xian"
+        android:layout_margin="15dp"
+        android:textColor="@color/black"
+        android:text="@string/zhuce_success"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/zhuce_money"
+        android:src="@drawable/money"
+        app:layout_constraintTop_toBottomOf="@id/normal_xian"
+        app:layout_constraintLeft_toRightOf="@id/zhuce_success"
+        android:layout_width="30dp"
+        android:layout_margin="10dp"
+        android:layout_height="30dp" />
+    <TextView
+        android:id="@+id/addone"
+        app:layout_constraintTop_toBottomOf="@id/normal_xian"
+        android:layout_margin="15dp"
+        android:textColor="@color/red"
+        android:text="+100"
+        app:layout_constraintLeft_toRightOf="@id/zhuce_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_margin="15dp"
+        app:layout_constraintTop_toBottomOf="@id/normal_xian"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/gray"
+        android:text="@string/already_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/notifi_zhuce"
+        app:layout_constraintTop_toBottomOf="@id/zhuce_success"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="15dp"
+        android:textColor="@color/gray"
+        android:text="@string/notifi_zhuce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:id="@+id/task_fenge"
+        app:layout_constraintTop_toBottomOf="@id/notifi_zhuce"
+        android:background="@color/gray_qian1"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <TextView
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task_fenge"
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        android:text="@string/day_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!--每日签到-->
+    <View
+        android:id="@+id/day_xian"
+        app:layout_constraintTop_toBottomOf="@id/task_fenge"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@color/gray_qian1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <TextView
+        android:id="@+id/day_qiandao"
+        app:layout_constraintTop_toBottomOf="@id/day_xian"
+        android:layout_margin="15dp"
+        android:textColor="@color/black"
+        android:text="@string/day_qiandao"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/day_qiandao_money"
+        android:src="@drawable/money"
+        app:layout_constraintTop_toBottomOf="@id/day_xian"
+        app:layout_constraintLeft_toRightOf="@id/day_qiandao"
+        android:layout_width="30dp"
+        android:layout_margin="10dp"
+        android:layout_height="30dp" />
+    <TextView
+        android:id="@+id/addtwo"
+        app:layout_constraintTop_toBottomOf="@id/day_xian"
+        android:layout_margin="15dp"
+        android:textColor="@color/red"
+        android:text="+20"
+        app:layout_constraintLeft_toRightOf="@id/day_qiandao_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/is_qiandao"
+        android:layout_width="wrap_content"
+        android:layout_height="13dp"
+        android:layout_margin="15dp"
+        android:text="@string/already_qiandao"
+        android:textColor="@color/gray"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/day_xian" />
+    <TextView
+        android:id="@+id/notifi_qiandao"
+        app:layout_constraintTop_toBottomOf="@id/day_qiandao"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="15dp"
+        android:textColor="@color/gray"
+        android:text="@string/notifi_legon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+        <!--阅读文章-->
+    <View
+        android:id="@+id/read_xian"
+        app:layout_constraintTop_toBottomOf="@id/notifi_qiandao"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@color/gray_qian1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <TextView
+        android:id="@+id/read_articl"
+        app:layout_constraintTop_toBottomOf="@id/read_xian"
+        android:layout_margin="15dp"
+        android:textColor="@color/black"
+        android:text="@string/read_articl"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/read_articl_money"
+        android:src="@drawable/money"
+        app:layout_constraintTop_toBottomOf="@id/read_xian"
+        app:layout_constraintLeft_toRightOf="@id/read_articl"
+        android:layout_width="30dp"
+        android:layout_margin="10dp"
+        android:layout_height="30dp" />
+    <TextView
+        android:id="@+id/addten"
+        app:layout_constraintTop_toBottomOf="@id/read_xian"
+        android:layout_margin="15dp"
+        android:textColor="@color/red"
+        android:text="+10"
+        app:layout_constraintLeft_toRightOf="@id/read_articl_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/read_precent"
+        android:layout_margin="15dp"
+        app:layout_constraintTop_toBottomOf="@id/read_xian"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/black"
+        android:text="@string/default_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/notifi_read"
+        app:layout_constraintTop_toBottomOf="@id/read_articl"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="15dp"
+        android:textColor="@color/gray"
+        android:text="@string/notifi_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <!--分享文章-->
+    <View
+        android:id="@+id/share_xian"
+        app:layout_constraintTop_toBottomOf="@id/notifi_read"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@color/gray_qian1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <TextView
+        android:id="@+id/share_articl"
+        app:layout_constraintTop_toBottomOf="@id/share_xian"
+        android:layout_margin="15dp"
+        android:textColor="@color/black"
+        android:text="@string/read_articl"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/share_articl_money"
+        android:src="@drawable/money"
+        app:layout_constraintTop_toBottomOf="@id/share_xian"
+        app:layout_constraintLeft_toRightOf="@id/share_articl"
+        android:layout_width="30dp"
+        android:layout_margin="10dp"
+        android:layout_height="30dp" />
+    <TextView
+        android:id="@+id/addtwenty"
+        app:layout_constraintTop_toBottomOf="@id/share_xian"
+        android:layout_margin="15dp"
+        android:textColor="@color/red"
+        android:text="+20"
+        app:layout_constraintLeft_toRightOf="@id/share_articl_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/share_precent"
+        android:layout_margin="15dp"
+        app:layout_constraintTop_toBottomOf="@id/share_xian"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/black"
+        android:text="@string/default_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/notifi_share"
+        app:layout_constraintTop_toBottomOf="@id/share_articl"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="15dp"
+        android:textColor="@color/gray"
+        android:text="@string/notifi_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>

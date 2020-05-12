@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.ui.collect.CollectActivity">
+        <ImageView
+            android:id="@+id/back"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="40dp"
+            android:src="@drawable/ic_back1"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="20dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="20sp"
+            android:text="@string/my_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/edit"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp"
+android:textSize="18sp"
+        android:textColor="@color/gray"
+        android:text="@string/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:id="@+id/fenge"
+        android:layout_marginTop="15dp"
+        android:background="@color/gray_qian1"
+        app:layout_constraintTop_toBottomOf="@id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/collect_tab"
+
+        app:layout_constraintTop_toBottomOf="@id/fenge"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.google.android.material.tabs.TabLayout>
+    <View
+        app:layout_constraintTop_toBottomOf="@id/collect_tab"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray_qian1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/collect_viewpage"
+        app:layout_constraintTop_toBottomOf="@id/collect_tab"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></androidx.viewpager.widget.ViewPager>
+</androidx.constraintlayout.widget.ConstraintLayout>

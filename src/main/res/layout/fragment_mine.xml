@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/con_legon"
     app:layout_constraintTop_toTopOf="parent"
@@ -78,7 +79,6 @@
         app:layout_constraintTop_toBottomOf="@id/con_legon"
         app:layout_constraintLeft_toRightOf="@+id/jifen_txt"
         android:layout_marginRight="180dp"
-        android:enabled="false"
         android:textSize="18sp"
         android:layout_width="75dp"
         android:layout_height="32dp" />

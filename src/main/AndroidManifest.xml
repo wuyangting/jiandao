@@ -22,7 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".home.ui.ConfimPassActivity"></activity>
+        <activity android:name=".home.ui.collect.CollectActivity"></activity>
+        <activity android:name=".home.ui.jifen.JiFenActivity" />
+        <activity android:name=".home.ui.ConfimPassActivity" />
         <activity android:name=".home.ui.legon.ForgetPassActivity" />
         <activity android:name=".home.ui.legon.PassWordLoginActivity" />
         <activity android:name=".home.ui.legon.ConfrimRegistActivity" />

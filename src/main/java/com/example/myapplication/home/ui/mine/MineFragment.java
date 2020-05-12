@@ -14,10 +14,13 @@ import com.example.myapplication.R;
 import com.example.myapplication.app.MyApplication;
 import com.example.myapplication.base.BaseFragment;
 import com.example.myapplication.home.setting.SettingActivity;
+import com.example.myapplication.home.ui.collect.CollectActivity;
+import com.example.myapplication.home.ui.jifen.JiFenActivity;
 import com.example.myapplication.home.ui.legon.LegonActivity;
 import com.example.myapplication.home.ui.mine.contract.MineContract;
 import com.example.myapplication.home.ui.mine.presenter.MinePresenterImpl;
 import com.example.myapplication.utils.SpUtil;
+
 
 public class MineFragment extends BaseFragment<MinePresenterImpl> implements MineContract.MineView, View.OnClickListener {
 
@@ -29,6 +32,8 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
     private Button mLegon;
     private TextView mDescNolegon;
     private TextView mLegonorno;
+    private String token;
+    private Button mNotifiSign;
 
     @Override
     protected void initListener() {
@@ -54,6 +59,8 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
         mTxtMes = (TextView) inflate.findViewById(R.id.mes_txt);
         mTxtSetting = (TextView) inflate.findViewById(R.id.setting_txt);
         mLegon = (Button) inflate.findViewById(R.id.legon);
+        mNotifiSign = (Button) inflate.findViewById(R.id.sign_notifi);
+        mNotifiSign.setOnClickListener(this);
         mUserpic.setOnClickListener(this);
         mTxtJifen.setOnClickListener(this);
         mTxtShoucang.setOnClickListener(this);
@@ -66,8 +73,9 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
             mLegon.setVisibility(View.GONE);
             mDescNolegon.setVisibility(View.GONE);
             String head_url = (String) SpUtil.getParam("head_url", "");
-            if(head_url!=null){
-                Glide.with(getActivity()).load(head_url) .apply(RequestOptions.bitmapTransform(new CircleCrop())).into(mUserpic);
+            token = (String) SpUtil.getParam("token", "");
+            if (head_url != null) {
+                Glide.with(getActivity()).load(head_url).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(mUserpic);
             }
             String nickname = (String) SpUtil.getParam("nickname", "");
             mLegonorno.setText(nickname);
@@ -75,6 +83,7 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
             mLegon.setVisibility(View.VISIBLE);
             mDescNolegon.setVisibility(View.VISIBLE);
         }
+
     }
 
     @Override
@@ -84,8 +93,8 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
             mLegon.setVisibility(View.GONE);
             mDescNolegon.setVisibility(View.GONE);
             String head_url = (String) SpUtil.getParam("head_url", "");
-            if(head_url!=null){
-                Glide.with(getActivity()).load(head_url) .apply(RequestOptions.bitmapTransform(new CircleCrop())).into(mUserpic);
+            if (head_url != null) {
+                Glide.with(getActivity()).load(head_url).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(mUserpic);
             }
             String nickname = (String) SpUtil.getParam("nickname", "");
             mLegonorno.setText(nickname);
@@ -93,7 +102,7 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
             mLegon.setVisibility(View.VISIBLE);
             mDescNolegon.setVisibility(View.VISIBLE);
             mLegonorno.setText(R.string.no_login);
-            Glide.with(getActivity()).load(R.drawable.mine_pic) .apply(RequestOptions.bitmapTransform(new CircleCrop())).into(mUserpic);
+            Glide.with(getActivity()).load(R.drawable.mine_pic).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(mUserpic);
         }
     }
 
@@ -108,8 +117,15 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
     }
 
     @Override
-    public void showToast(String msg) {
+    public void isQianDao() {
+        mNotifiSign.setEnabled(false);
+        mNotifiSign.setBackgroundResource(R.color.gray);
+    }
 
+
+    @Override
+    public void showToast(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -121,6 +137,9 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
                 break;
             case R.id.jifen_txt:// TODO 20/05/01
                 jifen();
+                break;
+            case R.id.sign_notifi:// TODO 20/05/01
+                qianDao();
                 break;
             case R.id.shoucang_txt:// TODO 20/05/01
                 shouCang();
@@ -139,6 +158,16 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
         }
     }
 
+    private void qianDao() {
+        if (MyApplication.isLogin) {
+            pre.qianDao(token);
+        } else {
+            Intent intent = new Intent(getActivity(), LegonActivity.class);
+            startActivity(intent);
+            Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void userPic() {
         if (MyApplication.isLogin) {
             Toast.makeText(getActivity(), "您已经登陆成功，我们会尽快开发这个模块功能的！！！", Toast.LENGTH_SHORT).show();
@@ -153,8 +182,6 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
         if (MyApplication.isLogin) {
             Toast.makeText(getActivity(), "您已经登陆成功了", Toast.LENGTH_SHORT).show();
         } else {
-//            SpUtil.setParam("isLogin",true);
-//            MyApplication.isLogin=true;
             Intent intent = new Intent(getActivity(), LegonActivity.class);
             startActivity(intent);
         }
@@ -167,13 +194,21 @@ public class MineFragment extends BaseFragment<MinePresenterImpl> implements Min
 
     private void message() {
         Toast.makeText(getActivity(), "消息", Toast.LENGTH_SHORT).show();
+//        startActivity(new Intent(getActivity(), SettingActivity.class));
     }
 
     private void shouCang() {
         Toast.makeText(getActivity(), "收藏", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getActivity(), CollectActivity.class));
     }
 
     private void jifen() {
-        Toast.makeText(getActivity(), "积分", Toast.LENGTH_SHORT).show();
+        if (MyApplication.isLogin) {
+            startActivity(new Intent(getActivity(), JiFenActivity.class));
+        } else {
+            Intent intent = new Intent(getActivity(), LegonActivity.class);
+            startActivity(intent);
+            Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
+        }
     }
 }

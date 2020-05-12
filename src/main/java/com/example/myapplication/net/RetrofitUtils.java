@@ -187,8 +187,9 @@ private boolean isNetWorkValid(){
                             Type[] actualTypeArguments =( (ParameterizedType) genericInterfaces[0]).getActualTypeArguments();
                             Type type=actualTypeArguments[0];
                             Gson gson=new Gson();
-                            T o = (T) gson.fromJson(string, type);
                             Log.d("网络数据", "onNext: "+string);
+                            T o = (T) gson.fromJson(string, type);
+
                             callback.onSuccess(o);
                         } catch (IOException e) {
                             e.printStackTrace();

@@ -1,7 +1,11 @@
 package com.example.myapplication.net.api;
 
 public class URLConstants {
-public static String BASE_URL="https://www.seetao.com/";
+    public static final String COLLECT_ARTICL = "/api/article/usercollect";
+    public static final String LIKE_ARTICL = "/api/article/userevaluate";
+    public static final String GETARTICL_INFO = "/api/article/articleattribute";
+    public static final String ADDINTEGRAL = "/api/article/readarticleaddintegral";
+    public static String BASE_URL="https://www.seetao.com/";
     //推荐列表
    public static String RECOMMEND_LIST= "app/v_1_3/article/recommendlist";
 
@@ -25,6 +29,9 @@ public static String BASE_URL="https://www.seetao.com/";
 
     //   忘记密码
     public static String FORGET_PASS= "/app/v_1_1/user/savepassword";
+
+  //   文章列表中推荐的文章列表
+    public static String RECOMMEND_ARTICAL= "/api/article/articleaccess";
 
 
     //    注册接口

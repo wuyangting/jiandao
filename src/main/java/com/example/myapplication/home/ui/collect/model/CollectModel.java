@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.myapplication.base.BaseModel;
 import com.example.myapplication.home.ui.collect.contract.CollectContract;
+import com.example.myapplication.home.ui.legon.bean.VerfiedBean;
 import com.example.myapplication.net.INetCallback;
 import com.example.myapplication.net.NetWorkFactory;
 import com.example.myapplication.net.ParamsUtils;
@@ -25,5 +26,16 @@ public class CollectModel extends BaseModel implements CollectContract.CollectMo
             Log.e("TAG","key="+key+",values="+commonParams.get(key));
         }
         NetWorkFactory.getInstance().getNetWork().get(URLConstants.COLLECT_DATA,commonParams,netCallback);
+    }
+
+    public void deleteCollect(String id, String token, INetCallback<VerfiedBean> netCallback) {
+
+        HashMap<String, String> commonParams = ParamsUtils.getCommonParams();
+        commonParams.put("id",id);
+        commonParams.put("token",token);
+        for (String key: commonParams.keySet()) {
+            Log.e("TAG","key="+key+",values="+commonParams.get(key));
+        }
+        NetWorkFactory.getInstance().getNetWork().post(URLConstants.DELETE_COLLECT,commonParams,netCallback);
     }
 }

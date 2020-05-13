@@ -109,6 +109,15 @@ public class CollectArticlDataBean {
             private String share_link;
             private String collect_id;
             private String time;
+            private boolean isDelete;
+
+            public boolean isDelete() {
+                return isDelete;
+            }
+
+            public void setDelete(boolean delete) {
+                isDelete = delete;
+            }
 
             public String getId() {
                 return id;

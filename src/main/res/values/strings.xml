@@ -53,4 +53,6 @@
     <string name="notifi_share">每日最多可获得200积分</string>
     <string name="my_collect">我的收藏</string>
     <string name="edit">编辑</string>
+    <string name="all_check">全选</string>
+    <string name="delete">删除</string>
 </resources>

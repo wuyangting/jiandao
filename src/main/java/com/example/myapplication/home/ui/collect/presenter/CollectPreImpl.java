@@ -4,6 +4,7 @@ import com.example.myapplication.base.BasePre;
 import com.example.myapplication.home.ui.collect.bean.CollectArticlDataBean;
 import com.example.myapplication.home.ui.collect.contract.CollectContract;
 import com.example.myapplication.home.ui.collect.model.CollectModel;
+import com.example.myapplication.home.ui.legon.bean.VerfiedBean;
 import com.example.myapplication.net.INetCallback;
 
 public class CollectPreImpl extends BasePre<CollectContract.CollectView> implements CollectContract.CollectPre {
@@ -20,6 +21,20 @@ public class CollectPreImpl extends BasePre<CollectContract.CollectView> impleme
             @Override
             public void onSuccess(CollectArticlDataBean collectArticlDataBean) {
                 view.setData(collectArticlDataBean);
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+
+            }
+        });
+    }
+
+    public void deleteCollect(StringBuffer stringBuffer, String token) {
+        collectModel.deleteCollect(stringBuffer.toString(),token, new INetCallback<VerfiedBean>() {
+            @Override
+            public void onSuccess(VerfiedBean verfiedBean) {
+                    view.showToast(verfiedBean.getMessage());
             }
 
             @Override
